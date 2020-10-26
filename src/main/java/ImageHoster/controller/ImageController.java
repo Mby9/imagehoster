@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.*;
 
 @Controller
@@ -29,9 +28,6 @@ public class ImageController {
 
     @Autowired
     private TagService tagService;
-
-    @Autowired
-    private CommentService commentService;
 
     //This method displays all the images in the user home page after successful login
     @RequestMapping("images")

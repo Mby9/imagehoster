@@ -24,9 +24,12 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    // Add user and image to the comment and save it.
+    // Redirect to the image page after saving the comment.
     @RequestMapping(value = "/image/{imageId}/{imageTitle}/comments", method = RequestMethod.POST)
-    public String createComment(@PathVariable("imageId") int imageId, @PathVariable("imageTitle") String imageTitle,
-                              @RequestParam String comment, HttpSession session) {
+    public String createComment(@PathVariable("imageId") int imageId,
+                                @PathVariable("imageTitle") String imageTitle,
+                                @RequestParam String comment, HttpSession session) {
         Image image = imageService.getImage(imageId);
         User user = (User) session.getAttribute("loggeduser");
 
