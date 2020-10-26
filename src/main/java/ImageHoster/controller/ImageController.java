@@ -102,9 +102,8 @@ public class ImageController {
     public String editImage(@RequestParam("imageId") Integer imageId, Model model, HttpSession session) {
         Image image = imageService.getImage(imageId);
 
-        String tags = convertTagsToString(image.getTags());
         model.addAttribute("image", image);
-        model.addAttribute("tags", tags);
+        model.addAttribute("tags", image.getTags());
         model.addAttribute("comments", image.getComments());
 
         User loggedUser = (User) session.getAttribute("loggeduser");
@@ -168,9 +167,8 @@ public class ImageController {
         String loggedUserName = loggedUser.getUsername();
         String imageUser = image.getUser().getUsername();
 
-        String tags = convertTagsToString(image.getTags());
         model.addAttribute("image", image);
-        model.addAttribute("tags", tags);
+        model.addAttribute("tags", image.getTags());
         model.addAttribute("comments", image.getComments());
 
         if (!loggedUserName.equals(imageUser)) {
